@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.example.demo.Models.UsuarioModel;
 import com.example.demo.Repositories.UsuarioRepository;
 
+import com.example.demo.Validators.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
+
 
     public ArrayList<UsuarioModel> obtenerUsuarios(){
         return (ArrayList<UsuarioModel>) usuarioRepository.findAll();

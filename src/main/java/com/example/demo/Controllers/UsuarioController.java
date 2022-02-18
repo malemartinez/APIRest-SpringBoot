@@ -3,9 +3,11 @@ package com.example.demo.Controllers;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import com.example.demo.Exceptions.UnprocessableEntity;
 import com.example.demo.Models.UsuarioModel;
 import com.example.demo.Services.UsuarioService;
 
+import com.example.demo.Validators.UserValidatorClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +15,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
+
     @Autowired
     UsuarioService usuarioService;
+    UserValidatorClass userValidatorClass;
+
 
     @GetMapping()
     public ArrayList<UsuarioModel> obtenerUsuarios(){
@@ -22,7 +27,8 @@ public class UsuarioController {
     }
 
     @PostMapping()
-    public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario){
+    public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario) throws UnprocessableEntity {
+            this.userValidatorClass.validator(usuario);
         return this.usuarioService.guardarUsuario(usuario);
     }
 
