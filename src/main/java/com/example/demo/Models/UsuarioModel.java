@@ -48,5 +48,6 @@ public class UsuarioModel {
         this.email = email;
     }
 
+
 }
 

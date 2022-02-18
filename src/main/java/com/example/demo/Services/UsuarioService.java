@@ -39,6 +39,14 @@ public class UsuarioService {
             return false;
         }
     }
+    //modificar el email
+    public void actualizarEmail(String email , Long id){
+        Optional<UsuarioModel> users = this.usuarioRepository.findById(id);
+        UsuarioModel user = users.get();
+        user.setEmail(email);
+        usuarioRepository.save(user);
+
+    }
 
 
 

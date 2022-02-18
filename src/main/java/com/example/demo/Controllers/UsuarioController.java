@@ -26,6 +26,11 @@ public class UsuarioController {
         return this.usuarioService.guardarUsuario(usuario);
     }
 
+    @PatchMapping(path = "/{id}")
+    public void ActualizarEmail(@RequestParam("email")  String email, @PathVariable("id") Long id){
+        this.usuarioService.actualizarEmail(email ,id);
+    }
+
     @GetMapping( path = "/{id}")
     public Optional<UsuarioModel> obtenerUsuarioPorId(@PathVariable("id") Long id) {
         return this.usuarioService.obtenerPorId(id);
