@@ -2,8 +2,15 @@ package com.example.demo.Validators;
 
 import com.example.demo.Exceptions.UnprocessableEntity;
 import com.example.demo.Models.UsuarioModel;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserValidatorClass implements UserValidator{
+
+    public void message(String message) throws UnprocessableEntity{
+        throw  new UnprocessableEntity(message);
+    }
+
     @Override
     public void validator(UsuarioModel usuario) throws UnprocessableEntity {
 
@@ -17,7 +24,5 @@ public class UserValidatorClass implements UserValidator{
 
     }
 
-    public void message(String message) throws UnprocessableEntity{
-        throw new UnprocessableEntity(message);
-    }
+
 }

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
 public class UnprocessableEntity extends Exception{
 
+    private String message;
+
     public UnprocessableEntity(String message) {
         super(message);
     }
